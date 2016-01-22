@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="projectRtc">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>
+        <%= title %>
+    </title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='css/style.css' />
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="javascripts/adapter.js"></script>
+    <script type="text/javascript" src="javascripts/rtcClient.js"></script>
+    <script type="text/javascript" src="javascripts/angular.min.js">
+    </script>
+    <script type="text/javascript" src="javascripts/app.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container center part1">
+        <h1>web视频聊天室</h1>
+        <br/>
+    </div>
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-8 part2">
+                <h2>接收视频源</h2>
+            </div>
+            <div class="col-md-4 part3">
+                <h2>推送视频源</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 part2 hehe" >
+                <div class="remoteStreams" ng-controller="RemoteStreamsController as rtc">
+                    <div id="remoteVideosContainer"></div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>对方视频流:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="stream in rtc.remoteStreams" ng-class="{'selected' : stream.isPlaying}">
+                                <td><a>对方名称:{{stream.name}}</a></td>
+                                <td ng-click="rtc.view(stream)"><a>查看视频源</a></td>
+                                <td ng-click="rtc.call(stream)"><a>发起会话</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <li class="butt"  ng-click="rtc.loadData()" style="width: 210px">
+                        <a href>刷新</a>
+                    </li>
+                    <br/>
+                </div>
+                <div class="clearfix"></div>
+                <div class="phoneStream" ng-controller="PhoneStreamController as phoneStream">
+                    <p>
+                        <%= phoneID %>:
+                            <input ng-model="phoneStream.id" />
+                    </p>
+                    <!--<video id="localVideo" muted="muted" autoplay="true"></video>-->
+                    <li class="butt"  ng-click="phoneStream.toggleCam() " style="width: 210px">
+                        <a href>绑定</a>
+                    </li>
+                </div>
+                    <br/>
+                    <br/>    
+            </div>
+            <div class="col-md-4 part3 hehe">
+                <div class="localStream" ng-controller="LocalStreamController as localStream">
+                    <p>设置用户名:
+                        <input ng-model="localStream.name" id="username"/>
+                    </p>
+                    <video id="localVideo" muted="muted" autoplay="true"></video>
+                    <li class="butt" ng-click="localStream.toggleCam()" style="width: 360px">
+                        <a href>{{ localStream.cameraIsOn ? '停止聊天' : '开始聊天' }}</a>
+                    </li>
+                    <div ng-show="localStream.cameraIsOn">
+                        <br/>
+                        <p>分享链接</p>
+                        <a>{{ localStream.link }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+body {
+  padding: 30px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image:  url(../images/back.jpg);
+}
+
+a {
+  color: forestgreen;
+  text-decoration: none;
+}
+
+.butt {
+    color: #d9eef7;
+    border: solid 1px #0076a3;
+    background: #0095cd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+    background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+}
+.butt:hover {
+    background: #007ead;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc', endColorstr='#00678e');
+}
+.butt:active {
+    color: #80bed6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
+    background: -moz-linear-gradient(top,  #0078a5,  #00adee);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5', endColorstr='#00adee');
+}
+
+table, tr, td, th {margin: 0;border: 0;padding: 5px;border-collapse: collapse;}
+tr td{
+    color: #008800;
+}
+
+li {
+    list-style-type: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 3px 3px 3px #888;
+    padding: 5px 5px 5px 5px;
+}
+
+.center{
+  text-align: center;
+}
+
+li:hover {
+  cursor: pointer;
+  background-color: #aaa;
+}
+
+.localStream {
+/*  display: inline-block;*/
+  top: 15px;
+  right: 15px;
+/*  float: right;*/
+}
+
+.localStream video {
+    border: 5px solid rgb(119, 119, 119);
+    outline: 0px none;
+    height: 270px;
+    width: 360px;
+    background-color: white;
+}
+
+.remoteStreams video{
+    border: 5px solid rgb(119, 119, 119);
+    outline: 0px none;
+    height: 493px;
+    width: 670px;
+    background-color: white;
+}
+
+/*.part1{
+  background-color: #C1FFE4;
+}
+.part2{
+  background-color:  #F7EED6;
+}
+.part3{
+  background-color: #9AFF9A;
+}*/
+.hehe{
+  height: 555px;
+}
+
+.remoteStreams{
+/*  display: inline-block;*/
+  top: 15px;
+  right: 15px;
+  float: left;
+  text-align: center;
+/*  margin-left: 300px;*/
+}
+
+.remoteStreams td:hover {
+  cursor: pointer;
+  background-color: #aaa;
+}
+
+.remoteStreams .selected {
+  background-color: #444 !important;
+  text-shadow:none;
+  border-right-color: #aaa;
+  border-left: none;
+  border-radius: 3px 3px 3px 3px; 
+  box-shadow:inset 1px 2px 6px #070707;
+}
+
+.footer {
+   clear: both;
+}
