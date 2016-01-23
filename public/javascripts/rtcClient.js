@@ -210,17 +210,6 @@ var PeerManager = (function () {
         setPhoneStreamforLocalStream: function (remoteId) {
             //alert("正在设置手机流为本地流,对方id"+remoteId);
             setPhonePeerforLocalStream(remoteId);
-            // if local cam has been stopped, remove it from all outgoing streams.
-            //if (!stream) {
-            //    for (id in peerDatabase) {
-            //        pc = peerDatabase[id].pc;
-            //        if (!!pc.getLocalStreams().length) {
-            //            pc.removeStream(localStream);
-            //            offer(id);
-            //        }
-            //    }
-            //}
-            //localStream = stream;
         },
         //切换本地视频流
         toggleLocalStream: function (remoteId) {

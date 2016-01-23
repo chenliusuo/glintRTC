@@ -89,38 +89,30 @@
 			 * This happens when you load <serverUrl>/<socketId> : 
 			 * it calls socketId immediatly.
 			**/
-			//alert("call");
 			if(!stream.id){
-				//alert("0");
 				stream = {id: stream, isPlaying: false};
 				rtc.remoteStreams.push(stream);
 			}
 			//如果摄像头开着
 			if(camera.isOn){
-				//alert("1");
 				client.toggleLocalStream(stream.id);
 				if(stream.isPlaying){
-					//alert("11");
 					client.peerRenegociate(stream.id);
 				} else {
-					//alert('12');
 					client.peerInit(stream.id);
 				}
 				stream.isPlaying = !stream.isPlaying;
 			} else {//摄像头关着
-				//alert("2");
 				camera.start()
 				.then(function(result) {
 					//切换本地视频流
 					client.toggleLocalStream(stream.id);
 					if(stream.isPlaying){
 						//如果对方视频流正在播放
-						//alert('21');
 						client.peerRenegociate(stream.id);
 					} else {
 						//如果对方视频流不在播放
 						//初始化视频流
-						//alert('22');
 						client.peerInit(stream.id);
 					}
 					stream.isPlaying = !stream.isPlaying;
@@ -146,7 +138,6 @@
 		localStream.cameraIsOn = false;
 
 		$scope.$on('cameraIsOn', function(event,data) {
-			//alert("给cameraIsOn赋值");
     		$scope.$apply(function() {
 		    	localStream.cameraIsOn = data;
 		    });
@@ -156,7 +147,6 @@
 		localStream.toggleCam = function(){
 			if(localStream.cameraIsOn){
 				//关掉摄像头
-				//alert("关掉摄像头");
 				camera.stop()
 				.then(function(result){
 					client.send('leave');
@@ -198,11 +188,9 @@
 		var remoteId;
 		//与手机绑定后
 		phoneStream.toggleCam = function(){
-			//alert("开始处理绑定结果,对方id"+phoneStream.id);
 			//client.setPhoneStreamforLocalStream(phoneStream.id);
 			client.peerPhoneInit(phoneStream.id);
 			//将手机流作为本地流，并向客户端广播
-			//开启摄像头
 			camera.phonestart()
 				.then(function(result) {
 					localStream.link = $window.location.host + '/' + client.getId();
